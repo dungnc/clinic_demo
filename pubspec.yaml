@@ -39,6 +39,8 @@ dependencies:
 
   cloud_firestore: ^3.1.5
 
+  #To fake Firebase Cloud Firestore for testing
+  fake_cloud_firestore: ^1.2.2
 
   #To manage state
   provider: ^6.0.2

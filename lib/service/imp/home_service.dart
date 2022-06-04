@@ -4,12 +4,13 @@ import 'package:demo_test/model/clinic.dart';
 import 'package:demo_test/service/home_api.dart';
 
 class HomeService extends HomeApi {
-  var db = FirebaseFirestore.instance;
+  final FirebaseFirestore instance;
+  HomeService(this.instance);
 
   @override
   Future<List<DocumentSnapshot>> getClinics(
       {int limit = 5, DocumentSnapshot? lastDoc}) async {
-    var query = db.collection('clinics').orderBy('name');
+    var query = instance.collection('clinics').orderBy('name');
     if (lastDoc != null) {
       query = query.startAfterDocument(lastDoc);
     }
@@ -21,11 +22,13 @@ class HomeService extends HomeApi {
 
   @override
   Future<Client?> getUserInfor() async {
-    var query =
-        db.collection('clients').doc('Z9JGmigZHU6XEbM9haDE').withConverter(
-              fromFirestore: (snapshot, _) => Client.fromJson(snapshot.data()!),
-              toFirestore: (Client value, _) => value.toJson(),
-            );
+    var query = instance
+        .collection('clients')
+        .doc('Z9JGmigZHU6XEbM9haDE')
+        .withConverter(
+          fromFirestore: (snapshot, _) => Client.fromJson(snapshot.data()!),
+          toFirestore: (Client value, _) => value.toJson(),
+        );
 
     var resp = await query.get();
 
@@ -34,7 +37,7 @@ class HomeService extends HomeApi {
 
   @override
   Future<Clinic> getClinicInformation(String clinicId) async {
-    var query = db.collection('clinics').doc(clinicId).withConverter(
+    var query = instance.collection('clinics').doc(clinicId).withConverter(
           fromFirestore: (snapshot, _) =>
               Clinic.fromJson(snapshot.data()!, clinicId),
           toFirestore: (Clinic value, _) => value.toJson(),

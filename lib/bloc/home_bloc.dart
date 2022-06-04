@@ -13,6 +13,7 @@ class HomeBloC extends BaseBloC {
 
   var _clinicsObject = BehaviorSubject<List<Clinic>>.seeded([]);
   Stream<List<Clinic>> get clinicsStream => _clinicsObject.stream;
+  List<Clinic> get clinics => _clinicsObject.valueOrNull ?? [];
 
   var _userInformationObject = BehaviorSubject<Client>();
   Stream<Client> get userInformationStream => _userInformationObject.stream;
