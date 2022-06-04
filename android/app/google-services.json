@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "627752313641",
+    "project_id": "challenge-heels",
+    "storage_bucket": "challenge-heels.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627752313641:android:2e93701708ae67cf8ecd38",
+        "android_client_info": {
+          "package_name": "com.example.demo_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627752313641-qesaqqvlcnrm0io8bd50et152d2ol9h6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD35BVi41xxcaxEwYwgSsRntLTjmgxZT8Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627752313641-qesaqqvlcnrm0io8bd50et152d2ol9h6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
