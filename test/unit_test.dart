@@ -1,15 +1,18 @@
 import 'package:cloud_firestore_platform_interface/cloud_firestore_platform_interface.dart';
 import 'package:demo_test/bloc/home_bloc.dart';
 import 'package:demo_test/service/imp/home_service.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 
 void main() {
   final instance = FakeFirebaseFirestore();
 
-  late HomeBloC homeBloC = HomeBloC(HomeService(instance));
+  late HomeBloC homeBloC;
 
   setUp(() async {
+    await Firebase.initializeApp();
+    homeBloC = HomeBloC(HomeService(instance));
     await instance.collection('clinics').add({
       'name': 'Massachusetts Clinic',
       'address': '813 Kinney Street, Longmeadow, MA',
