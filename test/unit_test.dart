@@ -1,5 +1,6 @@
 import 'package:cloud_firestore_platform_interface/cloud_firestore_platform_interface.dart';
 import 'package:demo_test/bloc/home_bloc.dart';
+import 'package:demo_test/model/client.dart';
 import 'package:demo_test/service/imp/home_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,7 +12,6 @@ void main() {
   late HomeBloC homeBloC;
 
   setUp(() async {
-    await Firebase.initializeApp();
     homeBloC = HomeBloC(HomeService(instance));
     await instance.collection('clinics').add({
       'name': 'Massachusetts Clinic',
@@ -37,8 +37,6 @@ void main() {
   group('HomeBloC', () {
     test('Get clinics', () async {
       await homeBloC.getClinics();
-
-      print('------${homeBloC.clinics.length}');
 
       expect(homeBloC.clinics, isNotNull);
       expect(homeBloC.clinics, isNotEmpty);
